@@ -1,50 +1,118 @@
-# Welcome to your Expo app 👋
+# BloodQuest
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+BloodQuest is an innovative mobile application that transforms blood donation into an engaging and gamified experience. Developed with React Native and Expo, this app aims to motivate blood donors through a system of quests, rewards, and progression.
 
-## Get started
+## Key Features
 
-1. Install dependencies
+- Personalized quest system
+- Progression and levels
+- Rewards and badges
+- Rankings and competitions
+- Gamified notifications and reminders
+- Social sharing and referral system
+- Donation tracking and history
+- Health integration
 
-   ```bash
+## Prerequisites
+
+- Node.js (version 14 or higher)
+- yarn (preferred) or npm
+- Expo CLI
+- An Expo account
+- iOS/Android emulator or physical device for testing
+
+## Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/your-organization/bloodquest.git
+   cd bloodquest
+   ```
+
+2. Install dependencies:
+   ```
+   yarn install
+   # or
    npm install
    ```
 
-2. Start the app
-
-   ```bash
-    npx expo start
+3. Start the application:
+   ```
+   yarn start
+   # or
+   npm start
    ```
 
-In the output, you'll find options to open the app in a
+## Project Structure
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+The project uses Expo Router for file-based routing. Here's the current structure:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+bloodquest/
+├── app/
+│   ├── (tabs)/
+│   │   ├── _layout.tsx
+│   │   ├── appointment/
+│   │   │   └── [id].tsx
+│   │   ├── appointment-selection/
+│   │   │   └── [id].tsx
+│   │   ├── campaign/
+│   │   │   └── [id].tsx
+│   │   ├── donate.tsx
+│   │   ├── index.tsx
+│   │   ├── profile.tsx
+│   │   ├── quests.tsx
+│   │   └── ranking.tsx
+│   ├── _layout.tsx
+│   ├── core/
+│   │   ├── constants.ts
+│   │   └── query.ts
+│   └── sign-in.tsx
+├── assets/
+├── components/
+├── constants/
+├── hooks/
+├── utils/
+├── app.json
+├── babel.config.js
+├── codegen.yml
+├── ctx.tsx
+├── eas.json
+├── expo-env.d.ts
+├── package.json
+├── tsconfig.json
+└── yarn.lock
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Configuration
 
-## Learn more
+1. Configure your `app.json` file with your app-specific information.
+2. If necessary, update environment variables in a `.env` file (make sure not to commit this file).
 
-To learn more about developing your project with Expo, look at the following resources:
+## Deployment
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+1. Build the app for production using EAS Build:
+   ```
+   eas build --platform ios
+   # or
+   eas build --platform android
+   ```
 
-## Join the community
+2. Submit your app to the stores using EAS Submit:
+   ```
+   eas submit --platform ios
+   # or
+   eas submit --platform android
+   ```
 
-Join our community of developers creating universal apps.
+## Contributing
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Contributions are welcome! Please refer to the CONTRIBUTING.md file for contribution guidelines.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Contact
+
+For any questions or suggestions, please contact the development team at dev@bloodquest.fr.
