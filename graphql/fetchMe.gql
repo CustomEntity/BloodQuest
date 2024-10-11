@@ -1,0 +1,9 @@
+query FetchMe {
+  users_me {
+    id
+    token
+    email
+    last_name
+    first_name
+  }
+}

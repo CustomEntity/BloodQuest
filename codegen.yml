@@ -1,0 +1,19 @@
+overwrite: true
+schema:
+  - "http://81.0.249.189/graphql?access_token=wK0JfN10d4SUCswQ0vme0ggGlETxig62"
+  - "http://81.0.249.189/graphql/system?access_token=wK0JfN10d4SUCswQ0vme0ggGlETxig62"
+documents: "graphql/**/*.gql"
+generates:
+  graphql/generated/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-query"
+    config:
+      fetcher:
+        func: '@/app/core/query#fetchData'
+        isReactHook: false
+      reactQueryVersion: 5
+      addInfiniteQuery: true
+      exposeQueryKeys: true
+      exposeFetcher: true

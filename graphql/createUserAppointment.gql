@@ -1,0 +1,5 @@
+mutation UserAppointment($data: create_user_appointments_input!) {
+  create_user_appointments_item(data: $data) {
+    id
+  }
+}

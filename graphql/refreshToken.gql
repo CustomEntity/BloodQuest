@@ -1,0 +1,7 @@
+mutation RefreshAccessToken($refresh_token: String!) {
+  auth_refresh(refresh_token: $refresh_token) {
+    access_token
+    refresh_token
+    expires
+  }
+}

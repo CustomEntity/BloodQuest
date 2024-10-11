@@ -1,0 +1,24 @@
+query FetchUserAppointments {
+    user_appointments {
+        id
+        user {
+            id
+        }
+        appointment {
+            id
+            date
+            start_time
+            end_time
+            nature
+            collection_point {
+                id
+                name
+                address
+                city
+                postal_code
+                coordinates
+                full_address
+            }
+        }
+    }
+}

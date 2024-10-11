@@ -1,0 +1,12 @@
+query FetchQuests {
+    quests {
+        id
+        title
+        goal
+        parent {
+            id
+        }
+        reward
+        type
+    }
+}

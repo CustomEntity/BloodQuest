@@ -1,0 +1,18 @@
+query FetchCollectionPointAppointments($collectionPoint: GraphQLStringOrFloat!) {
+    collection_point_appointments(filter: { collection_point: { id: { _eq: $collectionPoint } } }) {
+        id
+        date
+        start_time
+        end_time
+        nature
+        collection_point {
+            id
+            address
+            city
+            postal_code
+            coordinates
+            full_address
+            name
+        }
+    }
+}

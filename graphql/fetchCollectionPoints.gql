@@ -1,0 +1,11 @@
+query FetchCollectionPoints($limit: Int) {
+    collections_points(limit: $limit) {
+        id
+        address
+        city
+        postal_code
+        coordinates
+        full_address
+        name
+    }
+}

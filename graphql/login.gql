@@ -1,0 +1,7 @@
+mutation Login($email: String!, $password: String!) {
+  auth_login(email: $email, password: $password) {
+    access_token
+    refresh_token
+    expires
+  }
+}

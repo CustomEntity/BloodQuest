@@ -1,0 +1,1 @@
+export const DIRECTUS_BASE_URL = 'http://81.0.249.189';

@@ -1,37 +1,42 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import {Slot} from 'expo-router';
+import {SessionProvider} from "@/ctx";
+import {useFonts} from "expo-font";
+import {useEffect} from "react";
 import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+import 'react-native-gesture-handler';
+import {GestureHandlerRootView} from "react-native-gesture-handler";
+import {BottomSheetModalProvider} from "@gorhom/bottom-sheet";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+// SplashScreen.preventAutoHideAsync();
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+export default function Root() {
+    const [loaded, error] = useFonts({
+        'DelaGothicOne': require('@/assets/fonts/DelaGothicOne-Regular.ttf'),
+        'ADLaMDisplay': require('@/assets/fonts/ADLaMDisplay-Regular.ttf'),
+    });
 
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+    const queryClient = new QueryClient();
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
+    useEffect(() => {
+        if (loaded || error) {
+            SplashScreen.hideAsync();
+        }
+    }, [loaded, error]);
+
+    if (!loaded && !error) {
+        return null;
     }
-  }, [loaded]);
 
-  if (!loaded) {
-    return null;
-  }
-
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-    </ThemeProvider>
-  );
+    return (
+        <QueryClientProvider client={queryClient}>
+            <SessionProvider>
+                <GestureHandlerRootView style={{flex: 1}}>
+                    <BottomSheetModalProvider>
+                        <Slot/>
+                    </BottomSheetModalProvider>
+                </GestureHandlerRootView>
+            </SessionProvider>
+        </QueryClientProvider>
+    );
 }
